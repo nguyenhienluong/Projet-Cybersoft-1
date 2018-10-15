@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-info">
+                <img class="card-img-top" height="300" [src]="phim.HinhAnh" alt="">
+                <div class="card-body">
+                    <div style="height:150px; overflow: hidden;" class="card-text">{{phim.MoTa}}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <tr>          
+                <th>Thời lượng</th>
+                <th>Ngày giờ chiếu</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let lichChieu of phim.LichChieu">
+                <td>{{lichChieu.ThoiLuong}} phút </td>
+                <td>{{lichChieu.NgayChieuGioChieu | date:'dd/MM/yyyy ss:mm:hh'}} </td>
+                <td><button routerLink="/dat-ve" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

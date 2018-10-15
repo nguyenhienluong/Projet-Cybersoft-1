@@ -1,0 +1,16 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4 mb-3" *ngFor="let phim of dsPhims">
+            <div class="card text-white bg-info">
+                <img class="card-img-top" height="300" [src]="phim.HinhAnh" alt="">
+                <div class="card-body">
+                    <a [routerLink]="['/chi-tiet']" [queryParams]="{MaPhim:phim.MaPhim,TenPhim:phim.TenPhim}" >
+                        <h4 class="card-title text-white">{{phim.TenPhim}}</h4>
+                    </a>
+                    <div style="height:150px; overflow: hidden;" class="card-text">{{phim.MoTa}}</div>
+                </div>
+                <button (click) = "XemChiTiet(phim)" class="btn btn-success">Chi tiết phim</button>
+            </div>
+        </div>
+    </div>
+</div>

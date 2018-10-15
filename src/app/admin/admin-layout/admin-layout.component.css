@@ -1,0 +1,25 @@
+#side-bar {
+    background: blueviolet;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 50px 530px 50px;
+}
+
+header {
+    grid-column: span 12;
+}
+
+aside {
+    grid-column: span 3;
+}
+
+main {
+    grid-column: span 9;
+}
+
+footer {
+    grid-column: span 12;
+}

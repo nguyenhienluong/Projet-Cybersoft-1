@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/trang-chu">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/chi-tiet">Chi tiết</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dat-ve">Đặt vé</a>
+            </li>
+            <li *ngIf="!isLogin; else isLoginTemplate" class="nav-item">
+                <a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#myModal">Đăng nhập</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ng-template #isLoginTemplate>
+    <li class="nav-item">
+        <a class="nav-link">
+            {{nguoiDung.TaiKhoan}}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" style="cursor:pointer" (click)="DangXuat()">
+            Đăng xuất
+        </a>
+    </li>
+</ng-template>
+
+<router-outlet></router-outlet>
+
+<footer class="bg-dark py-3">
+    <h6 class="text-center text-white">Footer</h6>
+</footer>
+
+
+<button id="btnDangNhap" style="display: none" type="button" class="btn btn-primary">
+    Open modal
+</button>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <form (ngSubmit) = "DangNhap(taiKhoan.value,matKhau.value)">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input #taiKhoan class="form-control" placeholder="Tài khoản" required>
+                    </div>
+                    <div class="form-group">
+                        <input #matKhau type="password" class="form-control" placeholder="Mật khẩu" required>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit"  (click)="DangNhap(taiKhoan.value,matKhau.value)" class="btn btn-success">Đăng
+                        nhập</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
